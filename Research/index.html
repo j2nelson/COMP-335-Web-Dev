@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Group Theory</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="css/style.css">
+	</head>
+	<body>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 text-center text-uppercase">
+					<h1 class="title-super">Group Theory</h1>
+					<h4>and the platonic solids</h4>
+				</div>
+			</div>
+			<div class="row text-center banner">
+				<div class="col-md-2">
+					<h3>About</h3>
+				</div>
+				<div class="col-md-2">
+					<h3>Tetrahedron</h3>
+				</div>
+				<div class="col-md-2">
+					<h3>Cube</h3>
+				</div>
+				<div class="col-md-2">
+					<h3>Octahedron</h3>
+				</div>
+				<div class="col-md-2">
+					<h3>Dodecahedron</h3>
+				</div>
+				<div class="col-md-2">
+					<h3>Icosahedron</h3>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<hr>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					Here is going to be the interactive shape
+				</div>
+				<div class="col-md-6">
+					Here is going to be the elements
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<hr>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					Here is going to be the element composition
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<hr>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					Here will be the group table
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<hr>
+				</div>
+			</div>
+			<div class="row text-center">
+				<div class="col-md-4">
+					<i class="fa fa-github" aria-hidden="true"></i>
+					<a href="http://www.github.com/j2nelson">My Github</a>
+				</div>
+				<div class="col-md-4">
+					<i class="fa fa-linkedin-square" aria-hidden="true"></i>
+					<a href="https://www.linkedin.com/in/jamiennelson/">My LinkedIn</a>
+				</div>
+				<div class="col-md-4">
+					<i class="fa fa-envelope" aria-hidden="true"></i>
+					<a href="mailto:j2nelson@student.bridgew.edu">j2nelson@student.bridgew.edu</a>
+				</div>
+			</div>
+		</div>
+		<script src="js/three.js"></script>
+		<script>
+			var scene = new THREE.Scene();
+			var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
+
+			var renderer = new THREE.WebGLRenderer();
+			renderer.setSize( window.innerWidth, window.innerHeight );
+			document.body.appendChild( renderer.domElement );
+
+			var geometry = new THREE.BoxGeometry( 1, 1, 1 );
+			var material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+			var cube = new THREE.Mesh( geometry, material );
+			scene.add( cube );
+
+			camera.position.z = 5;
+
+			var animate = function () {
+				requestAnimationFrame( animate );
+
+				cube.rotation.x += 0.1;
+				cube.rotation.y += 0.1;
+
+				renderer.render(scene, camera);
+			};
+
+			animate();
+		</script>
+	</body>
+</html>
