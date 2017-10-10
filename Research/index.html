@@ -43,7 +43,7 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-md-6">
+				<div class="col-md-6" id = "shape">
 					Here is going to be the interactive shape
 				</div>
 				<div class="col-md-6">
@@ -93,15 +93,21 @@
 		<script src="js/three.js"></script>
 		<script>
 			//test three.js
+			var canvasWidth = 575;
+			var canvasHeight = 400;
+			var canvasRatio = canvasWidth / canvasHeight;
 			var scene = new THREE.Scene();
-			var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
+			var camera = new THREE.PerspectiveCamera( 75, canvasRatio, 1, 4000 );
+			scene.fog = new THREE.Fog( 0x808080, 2000, 4000 );
 
 			var renderer = new THREE.WebGLRenderer();
-			renderer.setSize( window.innerWidth, window.innerHeight );
-			document.body.appendChild( renderer.domElement );
+			renderer.setSize( canvasWidth, canvasHeight );
+			renderer.setClearColor( scene.fog.color, 1 );
+			var container = document.getElementById('shape');
+			container.appendChild( renderer.domElement );
 
 			var geometry = new THREE.BoxGeometry( 1, 1, 1 );
-			var material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+			var material = new THREE.MeshBasicMaterial( { color: 0xffffff } );
 			var cube = new THREE.Mesh( geometry, material );
 			scene.add( cube );
 
@@ -110,8 +116,8 @@
 			var animate = function () {
 				requestAnimationFrame( animate );
 
-				cube.rotation.x += 0.1;
-				cube.rotation.y += 0.1;
+				//cube.rotation.x += 0.1;
+				//cube.rotation.y += 0.1;
 
 				renderer.render(scene, camera);
 			};
