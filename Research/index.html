@@ -119,17 +119,14 @@
 			//Create tetrahedron geometry 
 			var triangleGeometry = new THREE.TetrahedronGeometry(2,0);
 
-			
-			for ( var i = 0; i < triangleGeometry.faces.length; i += 1 ) {
-					var hex = Math.random() * 0xffffff;
-					triangleGeometry.faces[ i ].color.setHex( hex );
-					//triangleGeometry.faces[ i + 1 ].color.setHex( hex );
-			}
-			var material = new THREE.MeshBasicMaterial( { vertexColors: THREE.FaceColors, overdraw: 0.5 } );
-			
+			//Add color to faces
+			triangleGeometry.faces[0].color.setHex(0x4286f4);
+			triangleGeometry.faces[1].color.setHex(0xf4415c);
+			triangleGeometry.faces[2].color.setHex(0x41f479);
+			triangleGeometry.faces[3].color.setHex(0xf4b841);
 
-			var triangleMaterial = new THREE.MeshNormalMaterial( { color: 0xffffff } );
-			var triangleMesh = new THREE.Mesh( triangleGeometry, material );
+			var triangleMaterial = new THREE.MeshBasicMaterial( { vertexColors: THREE.FaceColors, overdraw: 0.5 } );
+			var triangleMesh = new THREE.Mesh( triangleGeometry, triangleMaterial );
 
 			//Add tetrahedron to scene
 			scene.add( triangleMesh );
