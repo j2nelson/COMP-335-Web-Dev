@@ -47,7 +47,9 @@
 					Here is going to be the interactive shape
 				</div>
 				<div class="col-md-6">
-					Here is going to be the elements
+					Here is going to be the elements: <br>
+					r11<br>r12<br>r21<br>r22<br>r31<br>r32<br>
+					r41<br>r42<br>s12<br>s13<br>s14<br>
 				</div>
 			</div>
 			<div class="row">
@@ -106,18 +108,28 @@
 			var container = document.getElementById('shape');
 			container.appendChild( renderer.domElement );
 
-			var geometry = new THREE.BoxGeometry( 1, 1, 1 );
-			var material = new THREE.MeshBasicMaterial( { color: 0xffffff } );
-			var cube = new THREE.Mesh( geometry, material );
-			scene.add( cube );
+			var triangleGeometry = new THREE.TetrahedronGeometry();
+
+			//triangleGeometry.vertices.push( new THREE.Vector3( 1, 0, 0) );
+			//triangleGeometry.vertices.push( new THREE.Vector3( 0, 1, 0) );
+			//triangleGeometry.vertices.push( new THREE.Vector3( -1, 0, 0) );
+
+			//triangleGeometry.faces.push( new THREE.Face3( 0, 1, 2) );
+
+			var triangleMaterial = new THREE.MeshNormalMaterial( { 
+				color: 0xffffff 
+				//side: THREE.DoubleSide
+			} );
+			var triangleMesh = new THREE.Mesh( triangleGeometry, triangleMaterial );
+			scene.add( triangleMesh );
 
 			camera.position.z = 5;
 
 			var animate = function () {
 				requestAnimationFrame( animate );
 
-				//cube.rotation.x += 0.1;
-				//cube.rotation.y += 0.1;
+				triangleMesh.rotation.x += 0.01;
+				triangleMesh.rotation.y += 0.01;
 
 				renderer.render(scene, camera);
 			};
