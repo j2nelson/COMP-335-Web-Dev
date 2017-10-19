@@ -93,57 +93,6 @@
 			</div>
 		</div>
 		<script src="js/three.js"></script>
-		<script>
-			//create tetrahedron
-
-			//Define canvas size
-			var canvasWidth = 575;
-			var canvasHeight = 400;
-			var canvasRatio = canvasWidth / canvasHeight;
-
-			//Create a scene
-			var scene = new THREE.Scene();
-			scene.background = new THREE.Color( 0xf0f0f0 );
-
-			//Create a camera
-			var camera = new THREE.PerspectiveCamera( 75, canvasRatio, 1, 4000 );
-			
-			//Create a renderer
-			var renderer = new THREE.WebGLRenderer();
-			renderer.setSize( canvasWidth, canvasHeight );
-
-			//Place in HTML tag
-			var container = document.getElementById('shape');
-			container.appendChild( renderer.domElement );
-
-			//Create tetrahedron geometry 
-			var triangleGeometry = new THREE.TetrahedronGeometry(2,0);
-
-			//Add color to faces
-			triangleGeometry.faces[0].color.setHex(0x4286f4);
-			triangleGeometry.faces[1].color.setHex(0xf4415c);
-			triangleGeometry.faces[2].color.setHex(0x41f479);
-			triangleGeometry.faces[3].color.setHex(0xf4b841);
-
-			var triangleMaterial = new THREE.MeshBasicMaterial( { vertexColors: THREE.FaceColors, overdraw: 0.5 } );
-			var triangleMesh = new THREE.Mesh( triangleGeometry, triangleMaterial );
-
-			//Add tetrahedron to scene
-			scene.add( triangleMesh );
-
-			camera.position.z = 5;
-
-			//Rotate tetrahedron
-			var animate = function () {
-				requestAnimationFrame( animate );
-
-				triangleMesh.rotation.x += 0.01;
-				triangleMesh.rotation.y += 0.01;
-
-				renderer.render(scene, camera);
-			};
-
-			animate();
-		</script>
+		<script src="js/triangle.js"></script>
 	</body>
 </html>
